@@ -16,7 +16,10 @@ module.exports = merge(common, {
     port: 8080,
     // open: true,
     // enable hot reload
-    hot: true
+    hot: true,
+    proxy: {
+      "/": "http://localhost:5000"
+    }
   },
 
   plugins: [
