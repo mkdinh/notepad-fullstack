@@ -12,6 +12,9 @@ cache:
     - client/node_modules
 install:
   - yarn install
+  - yarn build
 script:
   - sleep 3
+  - yarn test
+  - cd client/
   - yarn test
