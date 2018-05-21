@@ -11,17 +11,20 @@ export class App extends Component {
       <Router>
         <div>
           <Navigation />
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route path="/signup" component={Signup} />
-            <Route path="/signin" component={Signin} />
-            <Route path="/signout" component={Signout} />
-            <Route path="/dashboard" component={Dashboard} />
-          </Switch>
+          <div className="container">
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route path="/signup" component={Signup} />
+              <Route path="/signin" component={Signin} />
+              <Route path="/signout" component={Signout} />
+              <Route path="/dashboard" component={Dashboard} />
+            </Switch>
+          </div>
         </div>
       </Router>
     );
   }
 }
 
-export default hot(module)(App);
+// export default hot(module)(App);
+export default App;
