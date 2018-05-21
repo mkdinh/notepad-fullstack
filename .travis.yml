@@ -17,4 +17,4 @@ install:
 script:
   - sleep 3
   - yarn test
-  - yarn client:test
+  - yarn test:client
