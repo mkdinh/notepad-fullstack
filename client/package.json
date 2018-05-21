@@ -5,12 +5,8 @@
   "license": "MIT",
   "jest": {
     "verbose": false,
-    "testMatch": [
-      "**/?(*.)(spec|test).js?(x)"
-    ],
-    "testPathIgnorePatterns": [
-      "/node_modules/"
-    ],
+    "testMatch": ["**/?(*.)(spec|test).js?(x)"],
+    "testPathIgnorePatterns": ["/node_modules/"],
     "setupTestFrameworkScriptFile": "./src/testUtils/setupTests.js",
     "moduleNameMapper": {
       "^.*\\.scss$": "<rootDir>/src/testUtils/stubs/ScssStub.js"
@@ -19,8 +15,8 @@
   "scripts": {
     "build": "webpack --config webpack.prod.js",
     "dev": "webpack-dev-server --config webpack.dev.js",
-    "test": "jest",
-    "test:watch": "yarn test --watch"
+    "test": "jest --forceExit",
+    "test:watch": "jest --watch"
   },
   "devDependencies": {
     "babel": "^6.23.0",
