@@ -11,7 +11,7 @@
     "setupTestFrameworkScriptFile": "./test/setup.js"
   },
   "scripts": {
-    "start": "node start",
+    "start": "node index.js",
     "dev": "nf start",
     "start:server": "nodemon index.js",
     "build:client": "node scripts/build-client.js",
