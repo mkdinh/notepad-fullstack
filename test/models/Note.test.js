@@ -32,7 +32,7 @@ describe("Note model", () => {
     } catch (err) {
       expect(err.errors.title).to.be.exist;
       expect(err.errors.title.message).to.equal(
-        "Your note need to have a title!",
+        "Your note need to have a title!"
       );
       return;
     }
@@ -40,7 +40,7 @@ describe("Note model", () => {
     throw new Error("test passed with invalid note inputs");
   });
 
-  it("throws an error if the title is empty", async () => {
+  it("throws an error if the body is empty", async () => {
     note = { ...note, body: "" };
     const noteDb = new Note(note);
     try {
@@ -62,7 +62,7 @@ describe("Note model", () => {
   it("set a default styles", async () => {
     const noteDb = new Note(note);
     expect(noteDb.style).to.be.eql({
-      background: "#FFFFA5",
+      background: "#FFFFA5"
     });
   });
 });

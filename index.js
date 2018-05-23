@@ -34,12 +34,21 @@ mongoose
   })
   .catch(err => console.log(err));
 
-if (["prod", "ci", "dev"].includes(process.env.NODE_ENV)) {
+if (["dev"].includes(process.env.NODE_ENV)) {
   // scope static assets to express
   app.use(express.static(path.join(__dirname, "client/public")));
   // send SPA files to client
   app.use("*", (req, res, next) => {
     res.sendFile(path.join(__dirname, "./client/public/index.html"));
+  });
+}
+
+if (["prod", "ci"].includes(process.env.NODE_ENV)) {
+  // scope static assets to express
+  app.use(express.static(path.join(__dirname, "client/dist/")));
+  // send SPA files to client
+  app.use("*", (req, res, next) => {
+    res.sendFile(path.join(__dirname, "./client/dist/index.html"));
   });
 }
 
