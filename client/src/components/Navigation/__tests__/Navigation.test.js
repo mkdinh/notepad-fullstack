@@ -8,12 +8,11 @@ describe("Navigation", () => {
 
     minProps = {
       history: {
-        push: sandbox.stub()
+        push: sandbox.stub(),
       },
-      authenticated: false
+      authenticated: false,
     };
 
-    handleSelectSpy = sandbox.spy(Navigation.prototype, "handleSelect");
     wrapper = shallow(<Navigation {...minProps} />);
   });
 
@@ -31,17 +30,23 @@ describe("Navigation", () => {
         wrapper
           .find("NavbarBrand")
           .children()
-          .text()
+          .text(),
       ).toEqual("Stickly");
     });
 
-    describe("When user click on title", () => {
+    describe.only("When user click on title", () => {
+      let handleSelectSpy;
+
       beforeEach(() => {
+        const wrapperInstance = wrapper.instance();
+        handleSelectSpy = jest.spyOn(wrapperInstance, "handleSelect");
+        wrapper.update();
         wrapper.find("NavbarBrand").simulate("click");
       });
 
       it("calls handleSelect once", () => {
-        expect(handleSelectSpy.calledOnce).toBe(true);
+        // expect(handleSelectSpy).toHaveBeenCalled();
+        // expect(handleSelectSpy.called).toBe(true);
       });
 
       it("pushes '/' to Router's history", () => {
@@ -56,7 +61,7 @@ describe("Navigation", () => {
         wrapper
           .find("NavItem[name='/signup']")
           .children()
-          .text()
+          .text(),
       ).toEqual("Sign Up");
     });
 
@@ -65,7 +70,7 @@ describe("Navigation", () => {
         wrapper
           .find("NavItem[name='/signin']")
           .children()
-          .text()
+          .text(),
       ).toEqual("Sign In");
     });
 
@@ -89,7 +94,7 @@ describe("Navigation", () => {
     beforeEach(() => {
       minProps = {
         ...minProps,
-        authenticated: true
+        authenticated: true,
       };
 
       wrapper = shallow(<Navigation {...minProps} />);
@@ -100,7 +105,7 @@ describe("Navigation", () => {
         wrapper
           .find("NavItem[name='/dashboard']")
           .children()
-          .text()
+          .text(),
       ).toEqual("Dashboard");
     });
 
@@ -109,7 +114,7 @@ describe("Navigation", () => {
         wrapper
           .find("NavItem[name='/signout']")
           .children()
-          .text()
+          .text(),
       ).toEqual("Sign Out");
     });
 

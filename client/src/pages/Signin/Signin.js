@@ -8,7 +8,7 @@ import {
   FormGroup,
   FormControl,
   ControlLabel,
-  Button
+  Button,
 } from "react-bootstrap";
 
 import "./Signin.scss";
@@ -22,7 +22,7 @@ export class Signin extends Component {
     this.state = {
       email: "",
       password: "",
-      confirmPassword: ""
+      confirmPassword: "",
     };
   }
 
@@ -33,9 +33,9 @@ export class Signin extends Component {
 
   render() {
     return (
-      <Grid>
+      <Grid className="Signin">
         <Row>
-          <PageHeader>Signin Page</PageHeader>
+          <PageHeader className="signin-header">Signin</PageHeader>
         </Row>
         <Row>
           <Col xs={0} md={3} />

@@ -11,7 +11,7 @@ export class App extends Component {
       <Router>
         <div>
           <Navigation />
-          <div className="container">
+          <div>
             <Switch>
               <Route exact path="/" component={Home} />
               <Route path="/signup" component={Signup} />

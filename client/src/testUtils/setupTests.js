@@ -5,6 +5,10 @@ import Adapter from "enzyme-adapter-react-16";
 import { shallow, mount } from "enzyme";
 import sinon from "sinon";
 import { MemoryRouter } from "react-router-dom";
+import mockAdapter from "axios-mock-adapter";
+import axios from "axios";
+import { expect } from "chai";
+const mockAxios = new mockAdapter(axios);
 
 jest.setTimeout(30000);
 
@@ -15,8 +19,14 @@ function mountWithRouterContext(Component) {
   return wrapper;
 }
 
+afterEach(() => {
+  mockAxios.restore();
+});
+
 global.React = React;
-global.shallow = shallow;
-global.mount = mount;
 global.sinon = sinon;
+global.mount = mount;
+// global.expect = expect;
+global.shallow = shallow;
+global.mockAxios = mockAxios;
 global.mountWithRouterContext = mountWithRouterContext;

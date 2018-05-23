@@ -1,4 +1,14 @@
-signin-form {
+@import "../../theme/theme";
+
+.Signin {
+  h1 {
+    font-family: $header-font;
+    color: $secondary-color;
+    text-align: center;
+  }
+}
+
+.signin-form {
   text-align: center;
 }
 

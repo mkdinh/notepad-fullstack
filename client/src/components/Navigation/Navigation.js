@@ -4,19 +4,19 @@ import "./Navigation.scss";
 import { withRouter, Link } from "react-router-dom";
 
 export class Navigation extends Component {
-  constructor() {
-    super();
-    this.handleSelect = this.handleSelect.bind(this);
-  }
+  // constructor() {
+  //   super();
+  //   this.handleSelect = this.handleSelect.bind(this);
+  // }
 
-  handleSelect(key, ev) {
+  handleSelect = (key, ev) => {
     let path = ev.target.name;
     this.props.history.push(path);
-  }
+  };
 
   renderNav = () => {
     return this.props.authenticated ? (
-      <Nav pullRight onSelect={this.handleSelect}>
+      <Nav className="navigation" pullRight onSelect={this.handleSelect}>
         <NavItem eventKey={1} name="/dashboard">
           Dashboard
         </NavItem>
