@@ -8,30 +8,52 @@ import {
   FormGroup,
   FormControl,
   ControlLabel,
-  Button,
+  Button
 } from "react-bootstrap";
+import { connect } from "react-redux";
+import { signinUser } from "../../utils/actions/authActions";
 
 import "./Signin.scss";
 
 export class Signin extends Component {
-  constructor() {
-    super();
+  state = {
+    email: "",
+    password: "",
+    error: ""
+  };
 
-    this.handleChange = this.handleChange.bind(this);
-
-    this.state = {
-      email: "",
-      password: "",
-      confirmPassword: "",
-    };
-  }
-
-  handleChange(ev) {
+  handleChange = ev => {
     let { name, value } = ev.target;
     this.setState({ [name]: value });
-  }
+  };
+
+  handleSubmit = async ev => {
+    ev.preventDefault();
+    const { email, password } = this.state;
+    // check to make sure that user input email and pasword
+    if (!email || !password)
+      return this.setState({ error: "Missing email or password field" });
+    // sign in user
+    try {
+      const res = await this.props.signinUser({ email, password });
+      this.props.history.push("/dashboard");
+      console.log("should pushed");
+    } catch (err) {
+      this.setState({ error: "Incorrect email and password" });
+    }
+  };
+
+  renderAlert = () => {
+    return (
+      this.state.error && (
+        <div className="input-error alert alert-danger">{this.state.error}</div>
+      )
+    );
+  };
 
   render() {
+    const { email, password } = this.state;
+
     return (
       <Grid className="Signin">
         <Row>
@@ -40,21 +62,36 @@ export class Signin extends Component {
         <Row>
           <Col xs={0} md={3} />
           <Col xs={12} md={6}>
-            <form className="signin-form">
+            <form onSubmit={this.handleSubmit} className="signin-form">
               <FormGroup>
                 <ControlLabel>Email</ControlLabel>
-                <FormControl type="text" name="email" />
-                <FormControl.Feedback />
+                <FormControl
+                  onChange={this.handleChange}
+                  type="text"
+                  value={email}
+                  name="email"
+                />
               </FormGroup>
 
               <FormGroup>
                 <ControlLabel>Password</ControlLabel>
-                <FormControl name="password" type="password" />
+                <FormControl
+                  onChange={this.handleChange}
+                  name="password"
+                  value={password}
+                  type="password"
+                />
                 <FormControl.Feedback />
               </FormGroup>
 
               <FormGroup className="button-wrapper">
-                <Button bsStyle="primary" bsSize="large" action="submit">
+                {this.renderAlert()}
+                <Button
+                  onSubmit={this.handleSubmit}
+                  bsStyle="primary"
+                  bsSize="large"
+                  type="submit"
+                >
                   Login
                 </Button>
               </FormGroup>
@@ -67,4 +104,8 @@ export class Signin extends Component {
   }
 }
 
-export default Signin;
+const mapStateToProps = state => ({
+  authenticated: state.auth.authenticated
+});
+
+export default connect(mapStateToProps, { signinUser })(Signin);

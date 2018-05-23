@@ -2,13 +2,9 @@ import React, { Component } from "react";
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from "react-bootstrap";
 import "./Navigation.scss";
 import { withRouter, Link } from "react-router-dom";
+import { connect } from "react-redux";
 
 export class Navigation extends Component {
-  // constructor() {
-  //   super();
-  //   this.handleSelect = this.handleSelect.bind(this);
-  // }
-
   handleSelect = (key, ev) => {
     let path = ev.target.name;
     this.props.history.push(path);
@@ -54,4 +50,8 @@ export class Navigation extends Component {
   }
 }
 
-export default withRouter(Navigation);
+const mapStateToProps = state => ({
+  authenticated: state.auth.authenticated
+});
+
+export default connect(mapStateToProps)(withRouter(Navigation));

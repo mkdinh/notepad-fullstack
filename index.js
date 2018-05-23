@@ -18,7 +18,11 @@ const PORT = process.env.PORT || 3001;
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(morgan("combined"));
+
+if (["dev"].includes(process.env.NODE_ENV)) {
+  app.use(morgan("combined"));
+}
+
 app.use(routes);
 // Configure Mongoose
 //--------------------------------------------------------

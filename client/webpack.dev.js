@@ -6,7 +6,7 @@ const path = require("path");
 
 module.exports = merge(common, {
   // display dev tools
-  devtool: "inline-cheap-module-source map",
+  devtool: "cheap-module-eval-source-map",
 
   devServer: {
     // specify static file directory

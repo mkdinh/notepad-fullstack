@@ -1,16 +1,16 @@
 import { Navigation } from "../Navigation";
 
 describe("Navigation", () => {
-  let wrapper, minProps, sandbox, handleSelectSpy;
+  let wrapper, minProps;
+
+  const sandbox = sinon.createSandbox();
 
   beforeEach(() => {
-    sandbox = sinon.createSandbox();
-
     minProps = {
       history: {
-        push: sandbox.stub(),
+        push: sandbox.stub()
       },
-      authenticated: false,
+      authenticated: false
     };
 
     wrapper = shallow(<Navigation {...minProps} />);
@@ -30,23 +30,15 @@ describe("Navigation", () => {
         wrapper
           .find("NavbarBrand")
           .children()
-          .text(),
+          .text()
       ).toEqual("Stickly");
     });
 
-    describe.only("When user click on title", () => {
+    describe("When user click on title", () => {
       let handleSelectSpy;
 
       beforeEach(() => {
-        const wrapperInstance = wrapper.instance();
-        handleSelectSpy = jest.spyOn(wrapperInstance, "handleSelect");
-        wrapper.update();
         wrapper.find("NavbarBrand").simulate("click");
-      });
-
-      it("calls handleSelect once", () => {
-        // expect(handleSelectSpy).toHaveBeenCalled();
-        // expect(handleSelectSpy.called).toBe(true);
       });
 
       it("pushes '/' to Router's history", () => {
@@ -61,7 +53,7 @@ describe("Navigation", () => {
         wrapper
           .find("NavItem[name='/signup']")
           .children()
-          .text(),
+          .text()
       ).toEqual("Sign Up");
     });
 
@@ -70,7 +62,7 @@ describe("Navigation", () => {
         wrapper
           .find("NavItem[name='/signin']")
           .children()
-          .text(),
+          .text()
       ).toEqual("Sign In");
     });
 
@@ -82,8 +74,10 @@ describe("Navigation", () => {
             wrapper
               .find("Nav")
               .simulate("select", index, { target: { name: path } });
-            node.simulate("select");
-            expect(handleSelectSpy.called).toBe(true);
+
+            const callArg = minProps.history.push.lastCall.args[0];
+
+            expect(callArg).toBe(path);
           });
         });
       });
@@ -94,7 +88,7 @@ describe("Navigation", () => {
     beforeEach(() => {
       minProps = {
         ...minProps,
-        authenticated: true,
+        authenticated: true
       };
 
       wrapper = shallow(<Navigation {...minProps} />);
@@ -105,7 +99,7 @@ describe("Navigation", () => {
         wrapper
           .find("NavItem[name='/dashboard']")
           .children()
-          .text(),
+          .text()
       ).toEqual("Dashboard");
     });
 
@@ -114,7 +108,7 @@ describe("Navigation", () => {
         wrapper
           .find("NavItem[name='/signout']")
           .children()
-          .text(),
+          .text()
       ).toEqual("Sign Out");
     });
 
@@ -122,12 +116,14 @@ describe("Navigation", () => {
       describe("When user click on NavItem", () => {
         it("pushes the correct path to Router", () => {
           wrapper.find("NavItem").forEach((node, index) => {
+            // simlate onSelect with name props of NavItme
             const path = node.props().name;
             wrapper
               .find("Nav")
               .simulate("select", index, { target: { name: path } });
-            node.simulate("select");
-            expect(handleSelectSpy.called).toBe(true);
+
+            const callArg = minProps.history.push.lastCall.args[0];
+            expect(callArg).toBe(path);
           });
         });
       });

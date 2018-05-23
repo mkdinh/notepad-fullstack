@@ -5,12 +5,10 @@ describe("Local Authentication", () => {
   let server, request;
 
   beforeEach(async () => {
-    // server = await makeServer();
     request = await SuperRequest.connect();
   });
 
   afterEach(async () => {
-    // await server.closeConnection();
     await request.closeConnection();
   });
 
@@ -21,16 +19,32 @@ describe("Local Authentication", () => {
       .set({ authorization: request._token });
   });
 
+  describe("describe /token", () => {
+    it("returns user info with the token is valid", async () => {
+      let res;
+      const user = await userFactory();
+
+      res = await request.get("/auth/token").set("authorization", user._token);
+      expect(res.status).to.equal(200);
+      expect(res.body).to.not.contain.keys("password");
+    });
+
+    it("returns user info with the token is valid", async () => {
+      let res;
+      const user = await userFactory();
+      user._token = user._token + "1";
+
+      res = await request.get("/auth/token").set("authorization", user._token);
+      expect(res.status).to.equal(401);
+    });
+  });
+
   describe("POST /signup", () => {
     it("returns token with valid inputs", async () => {
       let res;
       const userInputs = { ...validUser };
 
-      try {
-        res = await request.post("/auth/signup").send(userInputs);
-      } catch (err) {
-        console.log(err);
-      }
+      res = await request.post("/auth/signup").send(userInputs);
 
       expect(res.status).to.equal(203);
       expect(res.body).to.have.property("token");
@@ -43,7 +57,7 @@ describe("Local Authentication", () => {
       res = await request.post("/auth/signup").send(userInputs);
 
       expect(res.body).to.eql({
-        error: "You must provide an email and password",
+        error: "You must provide an email and password"
       });
       expect(res.status).to.equal(422);
     });

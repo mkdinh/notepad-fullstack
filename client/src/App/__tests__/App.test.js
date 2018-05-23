@@ -13,7 +13,7 @@ describe("App", () => {
 
   it("has a Navbar Component", () => {
     // console.log(wrapper.debug());
-    expect(wrapper.find("withRouter(Navigation)").exists()).toBe(true);
+    expect(wrapper.find("Connect(withRouter(Navigation))").exists()).toBe(true);
   });
 
   it("has Home Route component", () => {
@@ -30,13 +30,15 @@ describe("App", () => {
 
   it("has Signin Route component", () => {
     expect(
-      wrapper.find("Route[path='/signin']").props().component.name
+      wrapper.find("Route[path='/signin']").props().component.WrappedComponent
+        .name
     ).toEqual("Signin");
   });
 
   it("has Signout Route component", () => {
     expect(
-      wrapper.find("Route[path='/signout']").props().component.name
+      wrapper.find("Route[path='/signout']").props().component.WrappedComponent
+        .name
     ).toEqual("Signout");
   });
 

@@ -1,6 +1,12 @@
 import React, { Component } from "react";
-
+import { signoutUser } from "../../utils/actions/authActions";
+import { connect } from "react-redux";
 export class Signout extends Component {
+  componentWillMount() {
+    // automatically signout user upon visiting this page
+    this.props.signoutUser();
+  }
+
   render() {
     return (
       <div>
@@ -10,4 +16,4 @@ export class Signout extends Component {
   }
 }
 
-export default Signout;
+export default connect(null, { signoutUser })(Signout);

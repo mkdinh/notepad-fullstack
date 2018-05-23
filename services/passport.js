@@ -9,14 +9,14 @@ const keys = require("../keys");
 //--------------------------------------------------------
 const jwtOptions = {
   secretOrKey: keys.SECRET,
-  jwtFromRequest: ExtractJwt.fromHeader("authorization"),
+  jwtFromRequest: ExtractJwt.fromHeader("authorization")
 };
 
 const JwtLogin = new JwtStrategy(jwtOptions, async (payload, done) => {
   let user;
   // check if decoded user if match with database
   try {
-    user = await User.find({ _id: payload.sub });
+    user = await User.findOne({ _id: payload.sub });
   } catch (err) {
     return done(err, false, { error: "Something is wrong with this request" });
   }
@@ -30,7 +30,7 @@ const JwtLogin = new JwtStrategy(jwtOptions, async (payload, done) => {
 // setup options for local strategy
 //--------------------------------------------------------
 const localOptions = {
-  usernameField: "email",
+  usernameField: "email"
 };
 
 const localLogin = new LocalStrategy(
@@ -53,7 +53,7 @@ const localLogin = new LocalStrategy(
     } catch (err) {
       return done(err, false);
     }
-  },
+  }
 );
 
 // use passport strategies

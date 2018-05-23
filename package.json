@@ -5,7 +5,7 @@
   "repository": "git@github.com:mkdinh/notepad-fullstack.git",
   "author": "Michael Dinh <mkdinh94@gmail.com>",
   "jest": {
-    "verbose": false,
+    "verbose": true,
     "testMatch": ["**/?(*.)(spec|test).js?(x)"],
     "testPathIgnorePatterns": ["/node_modules/", "/client", "./keys"],
     "setupTestFrameworkScriptFile": "./test/setup.js"

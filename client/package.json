@@ -4,13 +4,9 @@
   "main": "index.js",
   "license": "MIT",
   "jest": {
-    "verbose": false,
-    "testMatch": [
-      "**/?(*.)(spec|test).js?(x)"
-    ],
-    "testPathIgnorePatterns": [
-      "/node_modules/"
-    ],
+    "verbose": true,
+    "testMatch": ["**/?(*.)(spec|test).js?(x)"],
+    "testPathIgnorePatterns": ["/node_modules/"],
     "setupTestFrameworkScriptFile": "./src/testUtils/setupTests.js",
     "moduleNameMapper": {
       "^.*\\.scss$": "<rootDir>/src/testUtils/stubs/ScssStub.js",
@@ -21,7 +17,8 @@
     "build": "webpack --config webpack.prod.js",
     "dev": "webpack-dev-server --config webpack.dev.js",
     "test": "jest --forceExit",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
   },
   "devDependencies": {
     "axios-mock-adapter": "^1.15.0",
@@ -48,6 +45,7 @@
     "postcss-loader": "^2.1.5",
     "react-hot-loader": "^4.2.0",
     "redux-logger": "^3.0.6",
+    "redux-mock-store": "^1.5.1",
     "sass-loader": "^7.0.1",
     "sinon": "^5.0.7",
     "style-loader": "^0.21.0",
