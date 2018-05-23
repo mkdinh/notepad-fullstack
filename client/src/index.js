@@ -12,9 +12,6 @@ import { Provider } from "react-redux";
 const token = localStorage.getItem("authToken");
 
 if (token) store.dispatch(authToken(token));
-// store.dispatch({
-//   type: AUTH_USER
-// });
 
 ReactDOM.render(
   <Provider store={store}>

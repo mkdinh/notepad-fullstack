@@ -1,18 +1,28 @@
 import React, { Component } from "react";
 import BannerCarousel from "../../components/BannerCarousel";
+import Signin from "../Signin";
 import "./Home.scss";
 
 export class Home extends Component {
-  constructor() {
-    super();
-  }
+  state = {
+    about: true,
+    signin: false
+  };
 
   componentDidMount() {}
 
+  toggleAbout = () =>
+    this.setState({ about: !this.state.about, signin: !this.state.signin });
+
+  toggleSignin = () => this.setState({ signin: !this.state.signin });
+
   render() {
+    const { about } = this.state;
     return (
       <div className="Home">
-        <div className="home-popup">
+        <Signin />
+
+        <div className={`about-popup ${about ? "about-open" : "about-close"}`}>
           <h3>What is Stickly?</h3>
           <p>
             Stickly is the old school sticky notes on a modern web platform!
@@ -28,6 +38,9 @@ export class Home extends Component {
             We also hooked up the application with a redis caching server for
             even<span className="action action-1"> faster </span>note retrieval!
           </p>
+          <button className="about-toggle-button" onClick={this.toggleAbout}>
+            <i className="	glyphicon glyphicon-triangle-left" />
+          </button>
         </div>
         <BannerCarousel />
       </div>

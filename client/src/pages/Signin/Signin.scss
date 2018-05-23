@@ -1,6 +1,13 @@
 @import "../../theme/theme";
 
 .Signin {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.9);
+  top: 25%;
+  width: 100%;
+  opacity: 0;
+  animation: fadeIn 500ms 500ms ease-in-out 1 forwards;
+
   h1 {
     font-family: $header-font;
     color: $secondary-color;
@@ -20,4 +27,13 @@
   margin: 1rem 2rem;
   padding: 1.25rem 5rem;
   font-size: 2rem;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

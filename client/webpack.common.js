@@ -12,7 +12,7 @@ module.exports = {
 
   // entry file (index.js)
   entry: {
-    app: "./index.js",
+    app: "./index.js"
   },
 
   output: {
@@ -21,7 +21,7 @@ module.exports = {
     // where to find bundle on server
     publicPath: "./dist",
     // where to deposit bundle on file system
-    path: path.resolve(__dirname, "./dist"),
+    path: path.resolve(__dirname, "./dist")
   },
 
   // set webpack target environment
@@ -30,7 +30,7 @@ module.exports = {
   // turn off node variables
   node: {
     __dirname: false,
-    __filename: false,
+    __filename: false
   },
 
   module: {
@@ -40,10 +40,10 @@ module.exports = {
         test: /\.js$/,
         loader: combineLoaders([
           {
-            loader: "babel-loader",
-          },
+            loader: "babel-loader"
+          }
         ]),
-        exclude: /node_modules/,
+        exclude: /node_modules/
       },
       // {
       //   // load css file as string and apply styles
@@ -59,19 +59,19 @@ module.exports = {
           devMode ? "style-loader" : MiniCssExtractPlugin.loader,
           "css-loader",
           // "postcss-loader",
-          "sass-loader",
-        ],
+          "sass-loader"
+        ]
       },
       {
         test: /\.(png|jpg|gif)$/,
         use: [
           {
             loader: "url-loader",
-            options: {},
-          },
-        ],
-      },
-    ],
+            options: {}
+          }
+        ]
+      }
+    ]
   },
 
   plugins: [
@@ -80,10 +80,10 @@ module.exports = {
       template: path.resolve(__dirname, "./public/index.html"),
       filename: "index.html",
       chunks: ["app"],
-      inject: false,
+      inject: false
     }),
     new MiniCssExtractPlugin({
-      filename: "./assets/css/app.bundle.css",
-    }),
-  ],
+      filename: "./assets/css/app.bundle.css"
+    })
+  ]
 };
