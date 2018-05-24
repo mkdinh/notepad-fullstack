@@ -16,6 +16,6 @@ describe("Home", () => {
   });
 
   it("has a popup div", () => {
-    expect(wrapper.find(".home-popup").exists()).toBe(true);
+    expect(wrapper.find(".about-popup").exists()).toBe(true);
   });
 });

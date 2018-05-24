@@ -6,12 +6,13 @@ import bannerThree from "./images/bannerThree.jpg";
 import "./BannerCarousel.scss";
 
 export class BannerCarousel extends Component {
-  constructor() {
-    super();
-  }
-
   render() {
-    return <img alt="banner" className="banner" src={bannerThree} />;
+    let { faded } = this.props;
+    return (
+      <div className={`banner-container ${faded ? "faded" : ""}`}>
+        <img alt="banner" className="banner" src={bannerThree} />
+      </div>
+    );
   }
 }
 

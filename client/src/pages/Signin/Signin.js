@@ -8,7 +8,7 @@ import {
   FormGroup,
   FormControl,
   ControlLabel,
-  Button
+  Button,
 } from "react-bootstrap";
 import { connect } from "react-redux";
 import { signinUser } from "../../utils/actions/authActions";
@@ -19,7 +19,7 @@ export class Signin extends Component {
   state = {
     email: "",
     password: "",
-    error: ""
+    error: "",
   };
 
   handleChange = ev => {
@@ -37,7 +37,6 @@ export class Signin extends Component {
     try {
       const res = await this.props.signinUser({ email, password });
       this.props.history.push("/dashboard");
-      console.log("should pushed");
     } catch (err) {
       this.setState({ error: "Incorrect email and password" });
     }
@@ -53,9 +52,9 @@ export class Signin extends Component {
 
   render() {
     const { email, password } = this.state;
-
+    const { visible } = this.props;
     return (
-      <Grid className="Signin">
+      <Grid className={`Signin ${!visible ? "fadein" : "fadeout"}`}>
         <Row>
           <PageHeader className="signin-header">Signin</PageHeader>
         </Row>
@@ -105,7 +104,7 @@ export class Signin extends Component {
 }
 
 const mapStateToProps = state => ({
-  authenticated: state.auth.authenticated
+  authenticated: state.auth.authenticated,
 });
 
 export default connect(mapStateToProps, { signinUser })(Signin);

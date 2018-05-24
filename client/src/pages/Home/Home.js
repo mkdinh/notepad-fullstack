@@ -1,27 +1,26 @@
 import React, { Component } from "react";
 import BannerCarousel from "../../components/BannerCarousel";
 import Signin from "../Signin";
+import Signup from "../Signup";
 import "./Home.scss";
 
 export class Home extends Component {
   state = {
     about: true,
-    signin: false
+    signinForm: false,
   };
 
-  componentDidMount() {}
-
-  toggleAbout = () =>
-    this.setState({ about: !this.state.about, signin: !this.state.signin });
-
-  toggleSignin = () => this.setState({ signin: !this.state.signin });
+  toggleAbout = () => {
+    this.setState({
+      about: !this.state.about,
+      signinForm: !this.state.signinForm,
+    });
+  };
 
   render() {
-    const { about } = this.state;
+    const { about, signinForm } = this.state;
     return (
       <div className="Home">
-        <Signin />
-
         <div className={`about-popup ${about ? "about-open" : "about-close"}`}>
           <h3>What is Stickly?</h3>
           <p>
@@ -42,7 +41,8 @@ export class Home extends Component {
             <i className="	glyphicon glyphicon-triangle-left" />
           </button>
         </div>
-        <BannerCarousel />
+        <BannerCarousel faded={signinForm} />
+        {this.props.children}
       </div>
     );
   }

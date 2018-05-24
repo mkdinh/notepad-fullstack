@@ -2,11 +2,15 @@
 
 .Signin {
   position: absolute;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 1);
   top: 25%;
   width: 100%;
   opacity: 0;
-  animation: fadeIn 500ms 500ms ease-in-out 1 forwards;
+
+  // // display: none;
+  // -webkit-transition: opacity 500ms;
+  // -moz-transition: opacity 500ms;
+  // transition: opacity 500ms linear 500ms;
 
   h1 {
     font-family: $header-font;
@@ -15,8 +19,19 @@
   }
 }
 
+.fadein {
+  animation: fadeIn 500ms 500ms ease-in-out 1 forwards;
+}
+
+.fadeout {
+  animation: fadeOut 500ms 500ms ease-in-out 1 forwards;
+  display: none;
+  transition: display 1000ms;
+}
+
 .signin-form {
-  text-align: center;
+  margin: auto;
+  width: 75%;
 }
 
 .signin-form .button-wrapper {
@@ -27,6 +42,15 @@
   margin: 1rem 2rem;
   padding: 1.25rem 5rem;
   font-size: 2rem;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
 
 @keyframes fadeIn {
