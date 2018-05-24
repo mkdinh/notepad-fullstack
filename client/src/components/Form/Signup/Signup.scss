@@ -1,16 +1,16 @@
-@import "../../theme/theme";
+@import "../../../theme/theme";
 
-.Signin {
+.Signup {
   position: absolute;
   background: rgba(255, 255, 255, 1);
-  top: 25%;
+  top: 20%;
   width: 100%;
   opacity: 0;
 
-  // // display: none;
-  // -webkit-transition: opacity 500ms;
-  // -moz-transition: opacity 500ms;
-  // transition: opacity 500ms linear 500ms;
+  // display: none;
+  -webkit-transition: opacity 500ms;
+  -moz-transition: opacity 500ms;
+  transition: opacity 500ms linear 500ms;
 
   h1 {
     font-family: $header-font;
@@ -29,16 +29,16 @@
   transition: display 1000ms;
 }
 
-.signin-form {
+.signup-form {
   margin: auto;
   width: 75%;
 }
 
-.signin-form .button-wrapper {
+.signup-form .button-wrapper {
   text-align: center;
 }
 
-.signin-form button {
+.signup-form button {
   margin: 1rem 2rem;
   padding: 1.25rem 5rem;
   font-size: 2rem;

@@ -12,27 +12,13 @@ describe("App", () => {
   });
 
   it("has a Navbar Component", () => {
-    // console.log(wrapper.debug());
     expect(wrapper.find("Connect(withRouter(Navigation))").exists()).toBe(true);
   });
 
-  it("has Home Route component", () => {
-    expect(wrapper.find("Route[path='/']").props().component.name).toEqual(
-      "Home"
-    );
-  });
-
-  it("has Signup Route component", () => {
+  it("has '/(signin|signup)?' route rendering subroutes component", () => {
     expect(
-      wrapper.find("Route[path='/signup']").props().component.name
-    ).toEqual("Signup");
-  });
-
-  it("has Signin Route component", () => {
-    expect(
-      wrapper.find("Route[path='/signin']").props().component.WrappedComponent
-        .name
-    ).toEqual("Signin");
+      wrapper.find("Route[path='/(signin|signup)?']").props().component.name
+    ).toEqual("HomeSubRoutes");
   });
 
   it("has Signout Route component", () => {

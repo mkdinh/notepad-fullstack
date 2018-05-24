@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { hot } from "react-hot-loader";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { Home, Signin, Signout, Signup, Dashboard } from "../pages";
+import { Home, Signout, Dashboard } from "../pages";
+import { SigninForm, SignupForm } from "../components/Form";
 import Navigation from "../components/Navigation";
 import "./App.scss";
 
@@ -13,9 +14,7 @@ export class App extends Component {
           <Navigation />
           <div>
             <Switch>
-              <Route exact path="/" component={Home} />
-              <Route path="/signup" component={Signup} />
-              <Route path="/signin" component={Signin} />
+              <Route exact path="/(signin|signup)?" component={HomeSubRoutes} />
               <Route path="/signout" component={Signout} />
               <Route path="/dashboard" component={Dashboard} />
             </Switch>
@@ -26,5 +25,13 @@ export class App extends Component {
   }
 }
 
-// export default hot(module)(App);
+export function HomeSubRoutes(props) {
+  return (
+    <Home {...props}>
+      <Route path="/signup" component={SignupForm} />
+      <Route path="/signin" component={SigninForm} />
+    </Home>
+  );
+}
+
 export default App;

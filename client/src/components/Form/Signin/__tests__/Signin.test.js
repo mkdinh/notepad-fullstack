@@ -11,7 +11,8 @@ describe("Signin", () => {
       signinUser: sandbox.stub().returns(Promise.resolve()),
       history: {
         push: sinon.spy(),
-      },
+        location: { pathname: "/ " }
+      }
     };
 
     wrapper = shallow(<Signin {...minProps} />);
@@ -35,8 +36,15 @@ describe("Signin", () => {
     it("set error to an empty string", () => {
       expect(wrapper.state().error).toEqual("");
     });
-  });
 
+    it("set visible to true", done => {
+      wrapper.instance().componentDidMount();
+      setTimeout(() => {
+        expect(wrapper.state().visible).toBe(true);
+        done();
+      }, 0);
+    });
+  });
   describe("Signin Form", () => {
     it("has a email input", () => {
       expect(wrapper.find("FormControl[name='email']").exists()).toBe(true);
@@ -44,7 +52,7 @@ describe("Signin", () => {
 
     it("has a password input", () => {
       expect(
-        wrapper.find("FormControl[name='password'][type='password']").exists(),
+        wrapper.find("FormControl[name='password'][type='password']").exists()
       ).toBe(true);
     });
 
@@ -60,8 +68,8 @@ describe("Signin", () => {
         emailFormControl.simulate("change", {
           target: {
             name: emailFormControl.props().name,
-            value: emailText,
-          },
+            value: emailText
+          }
         });
       });
 
@@ -78,8 +86,8 @@ describe("Signin", () => {
         passwordFormControl.simulate("change", {
           target: {
             name: passwordFormControl.props().name,
-            value: passwordText,
-          },
+            value: passwordText
+          }
         });
       });
 
@@ -92,13 +100,13 @@ describe("Signin", () => {
       it("calls signinUser with email and password", () => {
         let loginInfo = {
           email: "developer@developing.com",
-          password: "password",
+          password: "password"
         };
 
         wrapper.setState(loginInfo);
 
         wrapper.find("Button[type='submit']").simulate("submit", {
-          preventDefault: sandbox.stub(),
+          preventDefault: sandbox.stub()
         });
 
         expect(minProps.signinUser.calledWith(...loginInfo)).toBe(true);
@@ -107,17 +115,17 @@ describe("Signin", () => {
       it("display error message if username is empty", () => {
         let loginInfo = {
           email: "",
-          password: "password",
+          password: "password"
         };
 
         wrapper.setState(loginInfo);
 
         wrapper.find("Button[type='submit']").simulate("submit", {
-          preventDefault: sandbox.stub(),
+          preventDefault: sandbox.stub()
         });
 
         expect(wrapper.state().error).toEqual(
-          "Missing email or password field",
+          "Missing email or password field"
         );
 
         expect(wrapper.find("div.input-error").exists()).toBe(true);
@@ -126,30 +134,21 @@ describe("Signin", () => {
       it("display error message if password is empty", () => {
         let loginInfo = {
           email: "developer@developing.com",
-          password: "",
+          password: ""
         };
 
         wrapper.setState(loginInfo);
 
         wrapper.find("Button[type='submit']").simulate("submit", {
-          preventDefault: sandbox.stub(),
+          preventDefault: sandbox.stub()
         });
 
         expect(wrapper.state().error).toEqual(
-          "Missing email or password field",
+          "Missing email or password field"
         );
 
         expect(wrapper.find("div.input-error").exists()).toBe(true);
       });
-
-      // it("pushes '/dashboard' into Router's history if valid inputs", () => {
-      //   wrapper.find("Button[type='submit']").simulate("submit", {
-      //     preventDefault: sandbox.stub()
-      //   });
-
-      //   // console.log(minProps.history.push);
-      //   expect(minProps.history.push.called).toBe(true);
-      // });
     });
   });
 });
