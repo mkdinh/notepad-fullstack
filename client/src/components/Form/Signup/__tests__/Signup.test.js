@@ -172,7 +172,7 @@ describe("Signup", () => {
     });
 
     describe("when user click submit Button", () => {
-      it("calls signupUser with email and password", () => {
+      it("calls signupUser with valid inputs", () => {
         let loginInfo = {
           email: "developer@developing.com",
           password: "password",

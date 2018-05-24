@@ -41,11 +41,11 @@ export const signupUser = ({ email, password, firstName, lastName }) => {
   return dispatch =>
     api.signup({ email, password, firstName, lastName }).then(res => {
       // save token to user storage for persistence login
-      // saveToken(res.data.token);
+      saveToken(res.data.token);
       // dispatch to the top of the middleware stacks
       dispatch({
         type: SIGNUP_USER,
-        payload: res
+        payload: res.data
       });
     });
 };

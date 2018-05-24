@@ -4,41 +4,41 @@ const brypt = require("bcrypt");
 const UserSchema = new mongoose.Schema({
   email: {
     type: String,
-    unique: [true, "Email is already in use"],
-    required: [true, "Email field cannot be empty"],
-    trim: true,
+    unique: [true, "email is already in use"],
+    required: [true, "cannot be empty"],
+    trim: true
   },
 
   password: {
     type: String,
     trim: true,
-    required: [true, "Password field cannot be empty"],
+    required: [true, "cannot be empty"],
     validate: [
       password => {
-        return password && password.length > 6;
+        return password && password.length >= 6;
       },
-      "Password need to be greater than 6 characters",
-    ],
+      "need to be greater than 6 characters"
+    ]
   },
 
   firstName: {
     type: String,
     trim: true,
-    required: [true, "First name field cannot be empty"],
+    required: [true, "First name field cannot be empty"]
   },
 
   lastName: {
     type: String,
     trim: true,
-    required: [true, "Last name field cannot be empty"],
+    required: [true, "Last name field cannot be empty"]
   },
 
   notes: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Note",
-    },
-  ],
+      ref: "Note"
+    }
+  ]
 });
 
 UserSchema.pre("save", async function(next) {

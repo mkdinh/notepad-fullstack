@@ -45,7 +45,8 @@ export class Signup extends Component {
         const res = await this.props.signupUser(validInputs);
         this.props.history.push("/dashboard");
       } catch (err) {
-        this.setState({ error: err.message });
+        console.dir(err);
+        this.setState({ error: err.response.data.message });
       }
     }
   };
@@ -58,6 +59,20 @@ export class Signup extends Component {
         this.setState({ error: `Missing ${fieldName} field` });
         return false;
       }
+    }
+
+    if (inputs.password.length < 6) {
+      this.setState({
+        error: "Password field need to be greater than or equal to 6 characters"
+      });
+      return false;
+    }
+
+    if (inputs.password !== inputs.confirmPassword) {
+      this.setState({
+        error: "Password and comfirm password must match"
+      });
+      return false;
     }
 
     return inputs;

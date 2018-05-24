@@ -31,16 +31,18 @@ exports.signup = async (req, res, next) => {
   try {
     userDb = await User.findOne({ email: req.body.email });
   } catch (err) {
-    return next(err);
+    return res.status(500).error(err);
   }
   // if user exists, then return error
-  if (userDb) return res.status(422).send({ error: "Email already in use" });
+  if (userDb)
+    return res.status(422).send({ message: "Email is already in use" });
   // if user's email is available, create new user and save to database
   try {
     newUser = new User(req.body);
     await newUser.save();
   } catch (err) {
-    return next(err);
+    console.log(err);
+    return res.status(500).send(err);
   }
 
   // send authentication token to user
