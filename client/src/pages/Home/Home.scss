@@ -8,6 +8,10 @@
   top: 0;
   left: 0;
   z-index: -9;
+
+  @media screen and (max-width: 768px) {
+    height: auto;
+  }
 }
 
 .app-name-canvas {
@@ -23,6 +27,11 @@
   height: 60%;
   right: -50%;
   top: 25%;
+
+  @media screen and (max-width: 768px) {
+    width: 90%;
+    top: 23%;
+  }
 
   .action {
     font-weight: bold;
@@ -55,10 +64,18 @@
 
 .Home .about-open {
   animation: slideIn 500ms 300ms ease-out 1 normal forwards;
+
+  @media screen and (max-width: 768px) {
+    animation: slideInMobile 500ms ease-out 1 normal forwards;
+  }
 }
 
 .Home .about-close {
   animation: slideOut 500ms ease-out 1 normal forwards;
+
+  @media screen and (max-width: 768px) {
+    animation: slideOutMobile 500ms ease-out 1 normal forwards;
+  }
 }
 
 .Home .about-toggle-button {
@@ -73,10 +90,21 @@
   left: -5%;
   transition: all 500ms;
   outline: 0;
+
+  @media screen and (max-width: 768px) {
+    left: -5%;
+    top: -5%;
+    padding: 1rem 1.5rem;
+    font-size: 2rem;
+  }
 }
 
 .Home .about-toggle-button i {
   margin: 0.9rem 0.25rem 0 0;
+
+  @media screen and (max-width: 768px) {
+    margin: 0.5rem 0.25rem 0 0;
+  }
 }
 
 .Home .about-toggle-button:hover {
@@ -94,6 +122,16 @@
   }
 }
 
+@keyframes slideInMobile {
+  from {
+    right: -90%;
+  }
+
+  to {
+    right: 5%;
+  }
+}
+
 @keyframes slideOut {
   0% {
     right: 5%;
@@ -103,5 +141,17 @@
   }
   100% {
     right: -50%;
+  }
+}
+
+@keyframes slideOutMobile {
+  0% {
+    right: 5%;
+  }
+  50% {
+    right: 10%;
+  }
+  100% {
+    right: -90%;
   }
 }

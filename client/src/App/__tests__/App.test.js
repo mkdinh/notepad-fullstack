@@ -21,16 +21,15 @@ describe("App", () => {
     ).toEqual("HomeSubRoutes");
   });
 
-  it("has Signout Route component", () => {
+  it("has Signout Route component to be protected", () => {
     expect(
-      wrapper.find("Route[path='/signout']").props().component.WrappedComponent
-        .name
-    ).toEqual("Signout");
+      wrapper.find("Route[path='/signout']").props().component.displayName
+    ).toEqual("Connect(RequireAuth)");
   });
 
-  it("has Dashboard Route component", () => {
+  it("has Dashboard Route component to be protected", () => {
     expect(
-      wrapper.find("Route[path='/dashboard']").props().component.name
-    ).toEqual("Dashboard");
+      wrapper.find("Route[path='/signout']").props().component.displayName
+    ).toEqual("Connect(RequireAuth)");
   });
 });

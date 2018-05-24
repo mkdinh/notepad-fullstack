@@ -7,6 +7,10 @@
   width: 100%;
   opacity: 0;
 
+  @media screen and (max-width: 768px) {
+    top: 16.5%;
+  }
+
   // display: none;
   -webkit-transition: opacity 500ms;
   -moz-transition: opacity 500ms;

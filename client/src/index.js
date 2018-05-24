@@ -11,7 +11,10 @@ import { Provider } from "react-redux";
 // allow persistent login
 const token = localStorage.getItem("authToken");
 
-if (token) store.dispatch(authToken(token));
+if (token) {
+  store.dispatch({ type: AUTH_USER, payload: {} });
+  store.dispatch(authToken(token));
+}
 
 ReactDOM.render(
   <Provider store={store}>

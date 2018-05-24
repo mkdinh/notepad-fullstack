@@ -53,7 +53,7 @@ describe("Auth Actions", () => {
     // that can be use by reducers
     await store.dispatch(signupUser({ ...user }));
     const action = store.getActions()[0];
-    expect(action.type).toEqual(SIGNUP_USER);
+    expect(action.type).toEqual(AUTH_USER);
     expect(action.payload).toMatchObject(userInfo);
   });
 

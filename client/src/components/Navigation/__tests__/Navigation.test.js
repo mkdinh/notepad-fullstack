@@ -10,6 +10,9 @@ describe("Navigation", () => {
       history: {
         push: sandbox.stub()
       },
+      user: {
+        firstName: "Michael"
+      },
       authenticated: false
     };
 

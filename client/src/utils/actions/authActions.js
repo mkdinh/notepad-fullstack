@@ -1,4 +1,4 @@
-import { AUTH_USER, SIGNUP_USER, UNAUTH_USER } from "./types";
+import { AUTH_USER, UNAUTH_USER } from "./types";
 import * as api from "../api/authApi";
 
 export const authToken = token => {
@@ -44,7 +44,7 @@ export const signupUser = ({ email, password, firstName, lastName }) => {
       saveToken(res.data.token);
       // dispatch to the top of the middleware stacks
       dispatch({
-        type: SIGNUP_USER,
+        type: AUTH_USER,
         payload: res.data
       });
     });

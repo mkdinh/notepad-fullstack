@@ -13,6 +13,9 @@ export class Navigation extends Component {
   renderNav = () => {
     return this.props.authenticated ? (
       <Nav className="navigation" pullRight onSelect={this.handleSelect}>
+        <NavItem eventKey={2} name="/users/config">
+          {`Hello ${this.props.user.firstName}`}
+        </NavItem>
         <NavItem eventKey={1} name="/dashboard">
           Dashboard
         </NavItem>
@@ -51,7 +54,8 @@ export class Navigation extends Component {
 }
 
 const mapStateToProps = state => ({
-  authenticated: state.auth.authenticated
+  authenticated: state.auth.authenticated,
+  user: state.auth.user
 });
 
 export default connect(mapStateToProps)(withRouter(Navigation));
