@@ -1,0 +1,52 @@
+@import "../../../theme/theme";
+
+.NoteForm {
+  flex: 1;
+  background: rgb(255, 255, 255);
+  border-top-right-radius: 0.75rem;
+  border-bottom-right-radius: 0.75rem;
+  padding: 1rem 2rem;
+
+  .form-label {
+    font: bold 1.5rem Arial;
+    color: $tertiary-color;
+  }
+
+  .dropdown-container {
+    .dropdown {
+      display: flex;
+      width: 100%;
+      border: 1px solid $tertiary-color;
+      border-radius: 0.5rem;
+
+      ul {
+        width: 100%;
+      }
+
+      button {
+        background-color: rgb(255, 255, 255);
+        color: darken($tertiary-color, 40%);
+        font-size: 1.75rem;
+        border: none;
+      }
+
+      button.dropdown-toggle {
+        background-color: $tertiary-color;
+        color: rgb(255, 255, 255);
+      }
+
+      .stack-dropdown {
+        flex: 1;
+      }
+    }
+  }
+
+  .form-title,
+  .form-textarea {
+    border-color: $tertiary-color;
+  }
+
+  .form-textarea {
+    height: 200px;
+  }
+}

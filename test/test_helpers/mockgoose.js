@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 
 mongoose.Promise = global.Promise;
 const mockgoose = new Mockgoose(mongoose);
+mockgoose.helper.setDbVersion("3.2.1");
 
 const mockgoose_helper = {
   connect: async () => {
@@ -26,7 +27,7 @@ const mockgoose_helper = {
     mongoose.modelSchemas = {};
     await mockgoose.helper.reset();
     await mongoose.disconnect();
-  },
+  }
 };
 
 module.exports = mockgoose_helper;

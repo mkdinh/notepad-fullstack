@@ -39,7 +39,7 @@ describe("Local Authentication", () => {
       // expect(res.errors).to.have.property("token");
     }
     expect(res.body).to.eql({
-      error: "You must provide an email and password",
+      error: "You must provide an email and password"
     });
     expect(res.status).to.equal(422);
   });

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import BannerCarousel from "../../components/BannerCarousel";
+import { connect } from "react-redux";
 import "./Home.scss";
 
 export class Home extends Component {
@@ -31,7 +32,9 @@ export class Home extends Component {
 
   togglePopup = () => {
     if (this.state.about) {
-      this.props.history.push("/signin");
+      this.props.authenticated
+        ? this.props.history.push("/dashboard")
+        : this.props.history.push("/signin");
     } else {
       this.props.history.push("/");
     }
@@ -42,9 +45,10 @@ export class Home extends Component {
 
     return (
       <div className="Home">
+        {/* <BannerCarousel faded={!about}> */}
         {this.props.children}
-        <BannerCarousel faded={!about} />
         <Popup open={about} togglePopup={this.togglePopup} />
+        {/* </BannerCarousel> */}
       </div>
     );
   }
@@ -80,5 +84,8 @@ function Popup({ open, togglePopup }) {
 }
 
 Home.Popup = Popup;
+const mapStateToProps = state => ({
+  authenticated: state.auth.authenticated
+});
 
-export default Home;
+export default connect(mapStateToProps)(Home);

@@ -5,13 +5,14 @@ import { Home, Signout, Dashboard } from "../pages";
 import { RequireAuth } from "../components/HOC";
 import { SigninForm, SignupForm } from "../components/Form";
 import Navigation from "../components/Navigation";
+import BannerCarousel from "../components/BannerCarousel";
 import "./App.scss";
 
 export class App extends Component {
   render() {
     return (
       <Router>
-        <div>
+        <BannerCarousel>
           <Navigation />
           <div>
             <Switch>
@@ -20,7 +21,7 @@ export class App extends Component {
               <Route path="/dashboard" component={RequireAuth(Dashboard)} />
             </Switch>
           </div>
-        </div>
+        </BannerCarousel>
       </Router>
     );
   }

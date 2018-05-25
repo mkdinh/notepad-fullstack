@@ -5,6 +5,7 @@ nav.navigation {
   margin: 0;
   background: rgba($secondary-color, 0.9);
   border: none;
+  z-index: 999;
 
   li a:hover {
     background-color: darken($tertiary-color, 40%);

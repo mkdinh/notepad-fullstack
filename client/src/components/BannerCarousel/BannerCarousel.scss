@@ -10,12 +10,28 @@
   }
 }
 
-.banner-container {
+.filter {
   width: 100%;
   height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100vh;
   transition: background 500ms linear 500ms;
 }
 
+.banner-container {
+  width: 100%;
+  min-height: 100vh;
+  transition: background 500ms linear 500ms;
+  z-index: -100;
+}
+
 .faded {
-  background: rgba($primary-color, 0.75);
+  background-color: rgba($primary-color, 0.75);
+}
+
+.lightened {
+  background-color: rgba($primary-color, 0.25);
 }

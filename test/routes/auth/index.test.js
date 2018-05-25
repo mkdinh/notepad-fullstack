@@ -48,6 +48,8 @@ describe("Local Authentication", () => {
 
       expect(res.status).to.equal(203);
       expect(res.body).to.have.property("token");
+      expect(res.body).to.contain.keys(["email", "firstName", "lastName"]);
+      expect(res.body).to.not.contain.keys("password");
     });
 
     it("returns error with invalid inputs", async () => {

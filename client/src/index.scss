@@ -1,5 +1,11 @@
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 320px) {
   html {
-    font-size: 10px;
+    font-size: 8px;
+  }
+}
+
+@media screen and (max-width: 480px) and (min-width: 321px) {
+  html {
+    font-size: 12px;
   }
 }

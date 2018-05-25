@@ -1,11 +1,15 @@
 @import "../../../theme/theme";
 
 .Signin {
-  position: absolute;
+  // position: absolute;
   background: rgba(255, 255, 255, 1);
-  top: 17%;
+  // top: 17%;
   width: 100%;
   opacity: 0;
+
+  @media screen and (max-width: 768px) {
+    margin-top: 7.5rem;
+  }
 
   // display: none;
   -webkit-transition: opacity 500ms;

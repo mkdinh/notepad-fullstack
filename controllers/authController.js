@@ -41,10 +41,10 @@ exports.signup = async (req, res, next) => {
     newUser = new User(req.body);
     await newUser.save();
   } catch (err) {
-    console.log(err);
     return res.status(500).send(err);
   }
-
-  // send authentication token to user
-  res.status(203).send({ token: tokenForUser(newUser) });
+  const user = { ...newUser._doc };
+  delete user.password;
+  // send authentication token to user and new user info
+  res.status(203).send({ token: tokenForUser(newUser), ...user });
 };

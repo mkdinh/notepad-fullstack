@@ -93,12 +93,13 @@ export class Signup extends Component {
       confirmPassword,
       firstName,
       lastName,
-      visible
+      visible,
+      error
     } = this.state;
 
     return (
       <Fade in={visible}>
-        <Grid className="Signup" key={0}>
+        <Grid className={`Signup ${error ? "error" : ""}`} key={0}>
           <Row>
             <PageHeader className="signup-header">Signup</PageHeader>
           </Row>
