@@ -5,7 +5,7 @@ export default ({ _id, title, body, style, handleDelete }) => {
   return (
     <div className="Note" style={style}>
       <i
-        onClick={handleDelete.bind(this, _id)}
+        onClick={handleDelete ? handleDelete.bind(this, _id) : null}
         className="delete-icon glyphicon glyphicon-remove"
       />
       <h4>{title}</h4>

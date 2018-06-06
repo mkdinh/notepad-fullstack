@@ -9,7 +9,7 @@ const DraggableHOC = ComposedComponent => {
       _y: 0,
       open: true,
       isOver: false,
-      isDragging: false,
+      isDragging: false
     };
 
     componentDidMount() {
@@ -70,7 +70,7 @@ const DraggableHOC = ComposedComponent => {
       const { children, style, handleDragStart } = this.props;
       const position = {
         position: "relative",
-        opacity: isDragging ? 0.75 : 1,
+        opacity: isDragging ? 0.75 : 1
       };
 
       return (

@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { Component } from "react";
 
-exports class TestComponent extends Component {
+export class TestComponent extends Component {
   render() {
-    return <div>Testing</div>
-  };
-} 
+    return <div>Testing</div>;
+  }
+}

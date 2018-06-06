@@ -1,4 +1,4 @@
-import React, { Component } from "React";
+import React, { Component } from "react";
 import { FormGroup } from "react-bootstrap";
 import "./ColorPicker.scss";
 

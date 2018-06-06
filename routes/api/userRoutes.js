@@ -5,6 +5,5 @@ const { requireAuth } = require("../../middlewares/authentication");
 //--------------------------------------------------------
 
 router.get("/current", requireAuth, usersController.findCurrent);
-router.get("/:id/notes", requireAuth, usersController.findUserNotes);
 
 module.exports = router;

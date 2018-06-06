@@ -5,8 +5,9 @@ import {
   FormGroup,
   ControlLabel,
   SplitButton,
-  MenuItem,
+  MenuItem
 } from "react-bootstrap";
+import Note from "../../Note";
 import { Draggable, ColorPicker } from "./subcomponents";
 import { createNote } from "../../../utils/actions/noteActions";
 import { connect } from "react-redux";
@@ -17,7 +18,7 @@ const stacks = [
   { name: "Stack Two" },
   { name: "Stack Three" },
   { name: "Stack Four" },
-  { name: "Stack Five" },
+  { name: "Stack Five" }
 ];
 
 const colors = [
@@ -26,7 +27,7 @@ const colors = [
   "#ff7eb9",
   "#7afcff",
   "#feff9c",
-  "#fff740",
+  "#fff740"
 ];
 
 export class NoteForm extends Component {
@@ -34,8 +35,8 @@ export class NoteForm extends Component {
     title: "",
     body: "",
     style: {
-      backgroundColor: "white",
-    },
+      backgroundColor: "white"
+    }
   };
 
   componentDidMount() {
@@ -71,6 +72,7 @@ export class NoteForm extends Component {
 
   render() {
     const { title, body, style } = this.state;
+    const isDragging = this.props;
 
     return (
       <form
@@ -108,5 +110,5 @@ export class NoteForm extends Component {
 
 export default connect(
   null,
-  { createNote },
+  { createNote }
 )(Draggable(NoteForm));

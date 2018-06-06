@@ -1,13 +1,13 @@
 import { NoteForm } from "../Note";
-/
+
 describe("Note Form", () => {
   let wrapper, minProps, sandbox;
 
   beforeEach(() => {
     minProps = {
       style: {
-        backgroundColor: "white",
-      },
+        backgroundColor: "white"
+      }
     };
     wrapper = mount(<NoteForm {...minProps} />);
   });
@@ -28,7 +28,7 @@ describe("Note Form", () => {
     expect(
       wrapper
         .find("FormControl[componentClass='textarea'][name='body']")
-        .exists(),
+        .exists()
     ).toBe(true);
   });
 
