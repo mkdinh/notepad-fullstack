@@ -9,10 +9,11 @@ function tokenForUser(user) {
   return jwt.encode({ sub: user._id, iat: timestamp }, keys.SECRET);
 }
 
-exports.token = (req, res, next) => {
-  const user = { ...req.user._doc };
-  delete user.password;
-  return res.status(200).send(user);
+exports.token = async (req, res, next) => {
+  const user = await User.findOne({ _id: req.user._id }, "-password").populate(
+    "notes",
+  );
+  res.status(200).send(user);
 };
 
 exports.signin = (req, res, next) => {
@@ -25,7 +26,7 @@ exports.signup = async (req, res, next) => {
   // check if username and password exists
   if (!req.body.email || !req.body.password)
     return res.status(422).send({
-      error: "You must provide an email and password"
+      error: "You must provide an email and password",
     });
   // check if user email exists in database
   try {

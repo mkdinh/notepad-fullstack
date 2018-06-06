@@ -1,0 +1,45 @@
+.Draggable-transparent-wrapper {
+  // width: 33%;
+  display: flex;
+  align-items: center;
+}
+
+.Draggable {
+  background: rgb(255, 255, 255);
+  border-top-right-radius: 0.75rem;
+  border-bottom-right-radius: 0.75rem;
+  transition: transform 500ms;
+  z-index: 1000;
+
+  &.dragging {
+    opacity: 0.5;
+  }
+
+  &.close-draggable {
+    transform: translate(-16.5vw);
+  }
+
+  .draggable-content {
+    position: relative;
+    cursor: move;
+    display: flex;
+    align-items: flex-start;
+    border-radius: 0.75rem;
+  }
+
+  .toggle-button {
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+
+    i {
+      margin: 1.4rem 0.5rem auto 0;
+      font-size: 2rem;
+      transition: transform 300ms;
+
+      &:hover {
+        transform: rotate(180deg);
+      }
+    }
+  }
+}

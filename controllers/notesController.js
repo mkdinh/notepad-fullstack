@@ -1,4 +1,4 @@
-const { Note } = require("../models");
+const { Note, User } = require("../models");
 
 exports.index = async (req, res, next) => {
   const noteDb = await Note.find({});
@@ -8,6 +8,10 @@ exports.index = async (req, res, next) => {
 exports.create = async (req, res, next) => {
   const { title, body, style, expiration } = req.body;
   const noteDb = await Note.create({ title, body, style, expiration });
+  await User.findOneAndUpdate(
+    { _id: req.user._id },
+    { $push: { notes: noteDb._id } },
+  );
   res.status(201).json(noteDb);
 };
 

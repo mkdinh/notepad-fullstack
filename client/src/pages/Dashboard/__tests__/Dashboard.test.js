@@ -22,8 +22,8 @@ describe("Dashboard", () => {
   });
 
   describe("Form Col", () => {
-    it("has a Col with class 'form-col'", () => {
-      expect(wrapper.find("Col.form-col").exists()).toBe(true);
+    it("has a div with class 'form-col'", () => {
+      expect(wrapper.find("div.form-col").exists()).toBe(true);
     });
   });
 

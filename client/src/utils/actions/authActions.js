@@ -8,7 +8,7 @@ export const authToken = token => {
       .then(res => {
         dispatch({
           type: AUTH_USER,
-          payload: res.data
+          payload: res.data,
         });
       })
       .catch(err => {
@@ -28,7 +28,7 @@ export const signinUser = ({ email, password }) => {
         // dispatch to the top of the middleware stacks
         dispatch({
           type: AUTH_USER,
-          payload: res.data
+          payload: res.data,
         });
       })
       .catch(err => {
@@ -45,7 +45,7 @@ export const signupUser = ({ email, password, firstName, lastName }) => {
       // dispatch to the top of the middleware stacks
       dispatch({
         type: AUTH_USER,
-        payload: res.data
+        payload: res.data,
       });
     });
 };
@@ -53,7 +53,7 @@ export const signupUser = ({ email, password, firstName, lastName }) => {
 export function signoutUser() {
   clearToken();
   return {
-    type: UNAUTH_USER
+    type: UNAUTH_USER,
   };
 }
 

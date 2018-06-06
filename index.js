@@ -17,6 +17,7 @@ const PORT = process.env.PORT || 3001;
 //--------------------------------------------------------
 app.use(cors());
 app.use(bodyParser.json());
+app.use(morgan("tiny"));
 app.use(bodyParser.urlencoded({ extended: false }));
 
 if (["dev"].includes(process.env.NODE_ENV)) {
@@ -33,12 +34,12 @@ mongoose
     console.log("connected to database");
   })
   .catch(err => console.log(err));
-
 if (["dev"].includes(process.env.NODE_ENV)) {
   // scope static assets to express
-  app.use(express.static(path.join(__dirname, "client/public")));
+  // app.use(express.static(path.join(__dirname, "client/public")));
   // send SPA files to client
   app.use("*", (req, res, next) => {
+    console.log("hell");
     res.sendFile(path.join(__dirname, "./client/public/index.html"));
   });
 }

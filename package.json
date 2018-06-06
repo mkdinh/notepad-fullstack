@@ -6,8 +6,14 @@
   "author": "Michael Dinh <mkdinh94@gmail.com>",
   "jest": {
     "verbose": true,
-    "testMatch": ["**/?(*.)(spec|test).js?(x)"],
-    "testPathIgnorePatterns": ["/node_modules/", "/client", "./keys"],
+    "testMatch": [
+      "**/?(*.)(spec|test).js?(x)"
+    ],
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/client",
+      "./keys"
+    ],
     "setupTestFrameworkScriptFile": "./test/setup.js"
   },
   "scripts": {

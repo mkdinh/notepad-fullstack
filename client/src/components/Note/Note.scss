@@ -1,0 +1,25 @@
+.Note {
+  width: 20%;
+  height: 25vh;
+  margin: 1rem;
+  padding: 1rem;
+  position: relative;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 0.75rem #000000;
+  cursor: pointer;
+
+  .delete-icon {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+
+    &:hover {
+      color: rgb(209, 38, 38);
+      transition: color 500ms;
+    }
+  }
+
+  h4 {
+    color: inherit;
+  }
+}

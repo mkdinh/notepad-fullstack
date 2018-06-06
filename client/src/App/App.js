@@ -14,7 +14,7 @@ export class App extends Component {
       <Router>
         <BannerCarousel>
           <Navigation />
-          <div>
+          <div className="App-content">
             <Switch>
               <Route exact path="/(signin|signup)?" component={HomeSubRoutes} />
               <Route path="/signout" component={RequireAuth(Signout)} />

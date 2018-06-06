@@ -36,6 +36,10 @@ function mountWithReduxContext(Component) {
   return mount(<Provider store={store}>{Component}</Provider>);
 }
 
+function createTarget(properties, ev) {
+  return { ...ev, target: properties };
+}
+
 afterEach(() => {
   mockAxios.reset();
 });
@@ -46,5 +50,6 @@ global.mount = mount;
 global.shallow = shallow;
 global.mockAxios = mockAxios;
 global.mockStore = mockStore;
+global.createTarget = createTarget;
 global.mountWithRouterContext = mountWithRouterContext;
 global.mountWithReduxContext = mountWithReduxContext;

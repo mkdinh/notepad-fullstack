@@ -9,7 +9,7 @@ const keys = require("../keys");
 //--------------------------------------------------------
 const jwtOptions = {
   secretOrKey: keys.SECRET,
-  jwtFromRequest: ExtractJwt.fromHeader("authorization")
+  jwtFromRequest: ExtractJwt.fromHeader("authorization"),
 };
 
 const JwtLogin = new JwtStrategy(jwtOptions, async (payload, done) => {
@@ -30,7 +30,7 @@ const JwtLogin = new JwtStrategy(jwtOptions, async (payload, done) => {
 // setup options for local strategy
 //--------------------------------------------------------
 const localOptions = {
-  usernameField: "email"
+  usernameField: "email",
 };
 
 const localLogin = new LocalStrategy(
@@ -53,7 +53,7 @@ const localLogin = new LocalStrategy(
     } catch (err) {
       return done(err, false);
     }
-  }
+  },
 );
 
 // use passport strategies

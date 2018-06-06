@@ -2,31 +2,32 @@
 
 .Dashboard {
   display: flex;
-  min-height: 90vh;
   width: 100%;
   padding: 0;
   margin: 0;
-  overflow-x: hidden;
+  overflow-y: hidden;
 
   .form-col {
-    @extend .flex-child;
-    flex-basis: 25%;
+    display: flex;
     margin: 0;
     padding: 0;
     height: 100%;
     align-items: center;
     justify-content: flex-start;
     display: flex;
+    width: 1%;
   }
 
   .display-col {
     @extend .flex-child;
-    background: $primary-color;
-    flex-basis: 75%;
+    // background: $primary-color;
+    padding: 0;
+    width: 100%;
   }
 }
 
 .flex-child {
   flex: 1;
+  display: flex;
   margin: 0;
 }

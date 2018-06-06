@@ -5,8 +5,8 @@ const { requireAuth } = require("../../middlewares/authentication");
 //--------------------------------------------------------
 
 router.get("/", requireAuth, notesController.index);
-router.post("/", requireAuth, notesController.create);
 router.get("/:id", requireAuth, notesController.findOne);
+router.post("/", requireAuth, notesController.create);
 router.put("/:id", requireAuth, notesController.updateOne);
 router.delete("/:id", requireAuth, notesController.deleteOne);
 

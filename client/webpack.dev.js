@@ -12,22 +12,24 @@ module.exports = merge(common, {
     // specify static file directory
     publicPath: "/", // here's the change
     contentBase: path.resolve(__dirname, "./public/"),
+    historyApiFallback: true,
     // specify webpack-dev-server port
     port: 8080,
     // open: true,
     // enable hot reload
     // hot: true,
     proxy: {
-      "/": "http://localhost:5000"
-    }
+      "/api": "http://localhost:5000/",
+      "/auth": "http://localhost:5000/",
+    },
   },
 
   plugins: [
     // display file name during hot reload
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    new FriendErrorsWebpackPlugin()
+    new FriendErrorsWebpackPlugin(),
   ],
 
-  mode: "development"
+  mode: "development",
 });

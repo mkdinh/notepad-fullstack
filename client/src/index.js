@@ -6,7 +6,7 @@ import { AUTH_USER } from "./utils/actions/types";
 import { authToken } from "./utils/actions/authActions";
 import store from "./store";
 import { Provider } from "react-redux";
-
+import registerServiceWorker from "./registerServiceWorker";
 // check if authentication token is in user's local storage
 // allow persistent login
 const token = localStorage.getItem("authToken");
@@ -20,5 +20,7 @@ ReactDOM.render(
   <Provider store={store}>
     <App />
   </Provider>,
-  document.getElementById("root")
+  document.getElementById("root"),
 );
+
+registerServiceWorker();

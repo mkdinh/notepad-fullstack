@@ -1,0 +1,11 @@
+.ColorPicker {
+  text-align: center;
+  margin: 0.5rem -2rem;
+
+  .color-item {
+    padding: 0.3rem 1.25rem;
+    margin: auto 0.25rem;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+}

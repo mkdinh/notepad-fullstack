@@ -55,7 +55,7 @@ export class Navigation extends Component {
 
 const mapStateToProps = state => ({
   authenticated: state.auth.authenticated,
-  user: state.auth.user
+  user: state.user,
 });
 
 export default connect(mapStateToProps)(withRouter(Navigation));
