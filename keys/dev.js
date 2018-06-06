@@ -4,4 +4,5 @@ module.exports = {
   SECRET: process.env.SECRET,
   ADMIN_TOKEN:
     "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1YjAyMThlOWU4NmVmMDA1ZjgwN2ExYTgiLCJpYXQiOjE1MjY4NjQxMDU3ODF9.nGdjvgkcztK_P64gdW88nshr4QYKAlpDUIgRb_oq2Bg",
+  REDIS_URI: "redis://127.0.0.1:6379"
 };

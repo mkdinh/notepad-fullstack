@@ -10,7 +10,7 @@ exports.create = async (req, res, next) => {
   const noteDb = await Note.create({ title, body, style, expiration });
   await User.findOneAndUpdate(
     { _id: req.user._id },
-    { $push: { notes: noteDb._id } },
+    { $push: { notes: noteDb._id } }
   );
   res.status(201).json(noteDb);
 };
@@ -25,8 +25,8 @@ exports.updateOne = async (req, res, next) => {
     { _id: req.params.id },
     { $set: req.body },
     {
-      new: true,
-    },
+      new: true
+    }
   );
 
   res.status(202).json(noteDb);

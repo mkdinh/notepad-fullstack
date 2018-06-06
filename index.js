@@ -13,6 +13,8 @@ const server = http.createServer(app);
 const routes = require("./routes");
 const PORT = process.env.PORT || 3001;
 
+require("./services/cache");
+
 // Configure Express server
 //--------------------------------------------------------
 app.use(cors());

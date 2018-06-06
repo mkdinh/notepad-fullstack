@@ -2,7 +2,7 @@ import { DELETE_NOTE, CREATE_NOTE, AUTH_USER } from "../actions/types";
 
 const initState = {
   list: [],
-  error: "",
+  error: ""
 };
 
 export default (state = initState, action) => {
@@ -11,7 +11,7 @@ export default (state = initState, action) => {
     case AUTH_USER:
       return { ...state, list: action.payload.notes || [] };
     case CREATE_NOTE:
-      newList = [...state.list, action.payload];
+      newList = [action.payload, ...state.list];
       return { ...state, list: newList };
     case DELETE_NOTE:
       console.log(action.payload.id);

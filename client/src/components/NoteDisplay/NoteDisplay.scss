@@ -7,8 +7,10 @@
     padding: 1rem;
     display: flex;
     flex-wrap: wrap;
-    padding-left: 20vw;
+    margin-left: 25vw;
+    height: 90vh;
     flex-direction: row;
     align-content: flex-start;
+    overflow-y: auto;
   }
 }

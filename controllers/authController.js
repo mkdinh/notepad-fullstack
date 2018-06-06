@@ -10,9 +10,13 @@ function tokenForUser(user) {
 }
 
 exports.token = async (req, res, next) => {
-  const user = await User.findOne({ _id: req.user._id }, "-password").populate(
-    "notes",
-  );
+  const user = await User.findOne({ _id: req.user._id }, "-password")
+    .populate("notes")
+    .cache({
+      key: req.user._id
+    });
+  console.log(user);
+  // const response = user.populate({ path: "notes" });
   res.status(200).send(user);
 };
 
@@ -26,7 +30,7 @@ exports.signup = async (req, res, next) => {
   // check if username and password exists
   if (!req.body.email || !req.body.password)
     return res.status(422).send({
-      error: "You must provide an email and password",
+      error: "You must provide an email and password"
     });
   // check if user email exists in database
   try {
