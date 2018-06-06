@@ -34,8 +34,7 @@ describe("authReducer", () => {
     const state = authReducer({}, action);
 
     expect(state).toEqual({
-      authenticated: true,
-      user: action.payload
+      authenticated: true
     });
   });
 
@@ -43,6 +42,6 @@ describe("authReducer", () => {
     const action = signoutUser();
     const state = authReducer({}, action);
 
-    expect(state).toMatchObject({ authenticated: false, user: {} });
+    expect(state).toMatchObject({ authenticated: false });
   });
 });
